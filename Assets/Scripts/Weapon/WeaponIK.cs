@@ -117,8 +117,8 @@ public class WeaponIK : MonoBehaviour
 		isLocalPlayer = _isLocalPlayer;
 		anim = GetComponent<Animator> ();
 		if (IKHolders != null && shoulder != null) {
-			IKHolders.parent = shoulder;
-			IKHolders.localPosition = Vector3.zero;
+			IKHolders.parent.parent = shoulder;
+			IKHolders.parent.localPosition = Vector3.zero;
 			foreach (Transform child in IKHolders) {
 				child.localPosition = Vector3.zero;
 			}

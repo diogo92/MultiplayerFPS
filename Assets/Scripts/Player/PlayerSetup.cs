@@ -45,7 +45,7 @@ public class PlayerSetup : NetworkBehaviour {
 			GetComponent<WeaponIK> ().enabled = false;
 
 		} else {
-			PlayerModelGraphics.GetComponentInChildren<Animator> ().enabled = false;;
+			PlayerModelGraphics.GetComponentInChildren<Animator> ().enabled = false;
 			PlayerModelGraphics.GetComponentInChildren<WeaponIK> ().enabled = false;
 			GetComponentInChildren<WeaponIK> ().Setup (true);
 			SetLayerRecursively (PlayerModelGraphics, LayerMask.NameToLayer (dontDrawLayerName));

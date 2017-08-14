@@ -11,7 +11,7 @@ public class PlayerShoot : NetworkBehaviour {
 	private WeaponManager weaponManager;
 	private Animator anim;
 	[SerializeField]
-	//private Animation weaponIKAnim;
+	private Animator weaponIKAnim;
 
 	private Transform CurrentWeaponIKHolderParent;
 	[SerializeField]
@@ -143,7 +143,6 @@ public class PlayerShoot : NetworkBehaviour {
 		if (CurrentWeaponIKHolderParent != null && currentWeapon != null) {
 			CurrentWeaponIKHolderParent.localPosition = originalIKparentPosition;
 			currentWeapon.pivot.localRotation = originalIKparentRotation;
-			//weaponIKAnim.RemoveClip (currentWeapon.animations [0].name);
 		}
 		if (isScoping) {
 			isScoping = false;
@@ -155,7 +154,6 @@ public class PlayerShoot : NetworkBehaviour {
 		CurrentWeaponIKHolderParent = currentWeapon.LocalIKRightHandHold.parent;
 		originalIKparentPosition = CurrentWeaponIKHolderParent.localPosition;
 		originalIKparentRotation = currentWeapon.pivot.localRotation;
-		//weaponIKAnim.AddClip (currentWeapon.animations [0],currentWeapon.animations [0].name);
 		if(isLocalPlayer)
 			CrosshairManager.instance.currentWeaponCrosshairSize = currentWeapon.crosshairNormalSize;
 	}
@@ -202,7 +200,7 @@ public class PlayerShoot : NetworkBehaviour {
 			return;
 		}
 		currentWeapon.bullets--;
-//		weaponIKAnim.Play (currentWeapon.animations [0].name);
+		weaponIKAnim.CrossFadeInFixedTime (currentWeapon.name,0.01f);
 	//	StartShake ();
 		CmdOnShoot ();
 		DoRaycast ();
