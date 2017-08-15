@@ -20,6 +20,10 @@ public class PlayerWeapon {
 	public bool hasScope;
 
 	public float ADSSpeed = 2f;
+
+	public float VerticalRecoil;
+	public float HorizontalRecoil;
+
 	//Current number of bullets
 	[HideInInspector]
 	public int bullets;
@@ -29,14 +33,6 @@ public class PlayerWeapon {
 
 	//Pivot of the weapon
 	public Transform pivot;
-
-	/*	Weapon specific animations
-	 * 	
-	 * 	0 - IKHolder animation (kickback effect)
-	 * 	1 - Weapon model animation (Slider, etc)
-	 * 
-	 */
-	public AnimationClip[] animations;
 
 	/** Transforms for IK positioning **/
 
@@ -59,8 +55,4 @@ public class PlayerWeapon {
 	//Offets for correcting weapon pivot on remote player model
 	public Vector3 PivotCorrectionOffset;
 	public Vector3 RotationCorrectionOffset;
-
-	/** Camera shake**/
-	public float ShakeIntensity;
-	public float ShakeDecayRate;
 }

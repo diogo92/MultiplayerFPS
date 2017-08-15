@@ -7,6 +7,7 @@ public class PlayerShoot : NetworkBehaviour {
 	[SerializeField]
 	private string weaponLayerName = "Weapon";
 
+	PlayerMotor motor;
 	private PlayerWeapon currentWeapon;
 	private WeaponManager weaponManager;
 	private Animator anim;
@@ -35,21 +36,21 @@ public class PlayerShoot : NetworkBehaviour {
 	bool isADS = false;
 
 	/* Recoil */
-	Vector3 CameraOriginalPosition;
-	Vector3 originPosition;
-	Quaternion originRotation;
+	float targetVerticalRecoil;
+	float currentVerticalRecoil;
+	float totalVerticalAmount;
 
-	Vector3 targetShakePosition;
 
-	float shakeDecay = 0;
-	float shakeIntensity = 0;
+	float targetHorizontalRecoil;
+	float currentHorizontalRecoil;
+
 
 	void Start () {
 		if (cam == null) {
 			Debug.LogError ("PlayerShoot: No camera referenced!");
 			this.enabled = false;
 		}
-		//CameraOriginalPosition = cam.transform.localPosition;
+		motor = GetComponent<PlayerMotor> ();
 		anim = GetComponent<Animator> ();
 		weaponManager = GetComponent<WeaponManager> ();
 		currentWeapon = weaponManager.GetCurrentWeapon ();
@@ -57,7 +58,9 @@ public class PlayerShoot : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//DoShake ();
+		HandleRecoil ();
+		if (weaponIKAnim.GetCurrentAnimatorStateInfo (0).IsName ("Idle"))
+			weaponIKAnim.enabled = false;
 		if (!isLocalPlayer) {
 			HandleADS ();
 			return;
@@ -70,8 +73,10 @@ public class PlayerShoot : NetworkBehaviour {
 			return;
 		}
 
-		if (weaponManager.isReloading)
+		if (weaponManager.isReloading) {
+			isShooting = false;
 			CancelInvoke ("Shoot");
+		}
 
 		if (currentWeapon.bullets < currentWeapon.maxBullets) {
 			if (Input.GetKeyDown(KeyCode.R)) {
@@ -103,11 +108,10 @@ public class PlayerShoot : NetworkBehaviour {
 			}
 		} else {
 			if (Input.GetButtonDown("Fire1")) {
-
 				InvokeRepeating ("Shoot", 0, 1f / currentWeapon.fireRate);
 			} else if(Input.GetButtonUp("Fire1")){
-				isShooting = false;
 				CancelInvoke ("Shoot");
+				isShooting = false;
 			}
 		}
 		if (isShooting) {
@@ -115,28 +119,10 @@ public class PlayerShoot : NetworkBehaviour {
 		} else {
 			CrosshairManager.instance.currentWeaponCrosshairSize = Mathf.Lerp (CrosshairManager.instance.currentWeaponCrosshairSize, currentWeapon.crosshairNormalSize,Time.deltaTime*2f);
 		}
-	}
 
-
-	void DoShake(){
-		if (shakeIntensity > 0) {
-			cam.transform.localPosition = originPosition + Random.insideUnitSphere * shakeIntensity;
-			cam.transform.localRotation = new Quaternion (originRotation.x + Random.Range (-shakeIntensity, shakeIntensity) * .2f,
-				originRotation.y + Random.Range (-shakeIntensity, shakeIntensity) * .2f,
-				originRotation.z + Random.Range (-shakeIntensity, shakeIntensity) * .2f,
-				originRotation.w + Random.Range (-shakeIntensity, shakeIntensity) * .2f);
-			shakeIntensity -= shakeDecay;
-		} else {
-			cam.transform.localPosition = CameraOriginalPosition;
-		}
 	}
+		
 
-	void StartShake(){
-		originPosition = cam.transform.localPosition;
-		originRotation = cam.transform.localRotation;
-		shakeIntensity = currentWeapon.ShakeIntensity;
-		shakeDecay = currentWeapon.ShakeDecayRate;
-	}
 
 	//Switch weapon;
 	public void SwitchWeapon(PlayerWeapon _newWeapon){
@@ -200,8 +186,11 @@ public class PlayerShoot : NetworkBehaviour {
 			return;
 		}
 		currentWeapon.bullets--;
+		weaponIKAnim.enabled = true;
 		weaponIKAnim.CrossFadeInFixedTime (currentWeapon.name,0.01f);
-	//	StartShake ();
+		targetVerticalRecoil = Random.Range (0.1f, currentWeapon.VerticalRecoil);
+		targetHorizontalRecoil = Random.Range (-currentWeapon.HorizontalRecoil, currentWeapon.HorizontalRecoil);
+
 		CmdOnShoot ();
 		DoRaycast ();
 		if (currentWeapon.bullets <= 0)
@@ -227,6 +216,24 @@ public class PlayerShoot : NetworkBehaviour {
 			}
 			CmdOnHit (hit.point, hit.normal);
 		}
+	}
+
+	void HandleRecoil(){
+		if (isShooting) {
+			currentVerticalRecoil = Mathf.Lerp (currentVerticalRecoil, targetVerticalRecoil, Time.deltaTime * 50f);
+			totalVerticalAmount += currentVerticalRecoil;
+
+			currentHorizontalRecoil = Mathf.Lerp (currentVerticalRecoil, targetVerticalRecoil, Time.deltaTime);
+		} else {
+			targetHorizontalRecoil = Mathf.Lerp (targetHorizontalRecoil, 0, Time.deltaTime);
+			targetVerticalRecoil = Mathf.Lerp (targetVerticalRecoil, 0, Time.deltaTime);
+			currentVerticalRecoil = Mathf.Lerp (totalVerticalAmount, 0, Time.deltaTime*50f);
+			totalVerticalAmount -= currentVerticalRecoil;
+			currentVerticalRecoil = -currentVerticalRecoil;
+			currentHorizontalRecoil = Mathf.Lerp (currentVerticalRecoil, targetVerticalRecoil, Time.deltaTime);
+		}
+		motor.VerticalRecoil(currentVerticalRecoil);
+		//motor.HorizontalRecoil(currentHorizontalRecoil);
 	}
 
 	#endregion

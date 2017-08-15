@@ -40,6 +40,14 @@ public class PlayerMotor : NetworkBehaviour {
 		cameraRotationX = _cameraRotation;
 	}
 
+	public void VerticalRecoil(float _recoilAmount){
+		cameraRotationX += _recoilAmount;
+	}
+
+	public void HorizontalRecoil(float _recoilAmount){
+		rotation.y += _recoilAmount;
+	}
+
 	public void ApplyThruster(Vector3 _thrusterForce){
 		thrusterForce = _thrusterForce;
 	}
@@ -65,7 +73,8 @@ public class PlayerMotor : NetworkBehaviour {
 		if (cam != null) {
 			currentCameraRotationX -= cameraRotationX;
 			currentCameraRotationX = Mathf.Clamp (currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
-			cam.transform.localEulerAngles = new Vector3 (currentCameraRotationX, 0, 0);
+			Quaternion newRot = Quaternion.Euler (currentCameraRotationX, 0, 0);
+			cam.transform.localRotation = Quaternion.Slerp(cam.transform.localRotation,newRot,Time.deltaTime*2f);
 		}
 	}
 
