@@ -28198,7 +28198,7 @@ MonoBehaviour:
     graphics: {fileID: 1894317571215558}
     pivot: {fileID: 4350674617314670}
     ADSPosition: {x: -0.0937, y: 0.167, z: 0.024}
-    ADSRotation: {x: 95.3, y: -4.67, z: 0}
+    ADSRotation: {x: 93.8, y: -4.67, z: 0}
     ADSRemotePosition: {x: 0.04, y: 0.15, z: -0.06}
     ADSRemoteRotation: {x: 91.4, y: -28.5, z: -27.8}
     LocalIKRightHandHold: {fileID: 4785659490758010}

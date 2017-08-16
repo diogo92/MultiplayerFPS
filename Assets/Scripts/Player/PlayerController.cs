@@ -84,7 +84,6 @@ public class PlayerController : MonoBehaviour {
 
 		Vector3 _velocity = (_movHorizontal + _movVertical) * speed;
 
-		//animator.SetFloat ("ForwardVelocity", _zMov);
 		CrosshairManager.instance.playerSpeed = _velocity.magnitude;
 		motor.Move (_velocity);
 
@@ -103,8 +102,10 @@ public class PlayerController : MonoBehaviour {
 		motor.RotateCamera (_cameraRotationX);
 
 		//Weapon Sway
-		if(weaponManager.GetCurrentGraphics() != null)
-			weaponManager.GetCurrentGraphics().SetMovement(_xRot* lookSensitivity, _yRot* lookSensitivity);
+		Debug.Log(_xMov);
+		if (weaponManager.GetCurrentGraphics () != null) {
+				weaponManager.GetCurrentGraphics ().SetMovement ((_xRot * lookSensitivity)  - (_xMov * speed/2f), (_yRot * lookSensitivity) + (_xMov * speed/2f));
+		}
 
 		//Thruster
 		Vector3 _thrusterForce = Vector3.zero;

@@ -21,11 +21,14 @@ public class PlayerWeapon {
 	public float crosshairNormalSize = 0f;
 	public float crosshairShootingSize = 0f;
 
+	/* Aim Down Sight values*/
 	public float ADSFOV = 45f;
-	public bool hasScope;
-
 	public float ADSSpeed = 2f;
 
+	//Check if weapon has a scope
+	public bool hasScope;
+
+	/* Recoil amount for each axis */
 	public float VerticalRecoil;
 	public float HorizontalRecoil;
 

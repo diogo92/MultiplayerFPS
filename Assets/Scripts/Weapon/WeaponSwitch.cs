@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+
+/*
+ * Weapon switch input handling
+ */
 public class WeaponSwitch : NetworkBehaviour {
 
 	//Reference to the weapon manager

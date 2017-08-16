@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+
+/*
+ * Weapon handling component
+ * Sets up positioning, hierarchy and layering for both local and remote player objects
+ * Handles reloading animation and weapon switching so it propagates correctly over the network
+ */
 public class WeaponManager : NetworkBehaviour {
 
 	//Weapon layer for first person weapon camera
