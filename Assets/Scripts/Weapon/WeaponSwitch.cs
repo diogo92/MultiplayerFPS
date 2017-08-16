@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.Networking;
 public class WeaponSwitch : NetworkBehaviour {
 
+	//Reference to the weapon manager
 	private WeaponManager wm;
-	private PlayerInput input;
+	//Index of the currently held weapon
 	private int currentWeaponIndex = 0;
+
 	void Start () {
 		wm = GetComponent<WeaponManager> ();
-		input = GetComponent<PlayerInput> ();
 	}
 
 	void Update(){
+		//Disable switching if game is paused
 		if (PauseMenu.IsOn)
 			return;
 		if (Input.GetAxis("Mouse ScrollWheel")> 0) {
@@ -28,8 +30,9 @@ public class WeaponSwitch : NetworkBehaviour {
 		}
 	}
 
-	[Client]
+	//[Client]
 	void SwitchWeapon(int index){
+		//Call the switch method on the weapon manager
 		wm.DoSwitch (index);
 	}
 }

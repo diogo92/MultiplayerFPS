@@ -173,10 +173,12 @@ public class WeaponManager : NetworkBehaviour {
 		if (isLocalPlayer) {
 			Util.SetLayerRecursively (currentGraphics.gameObject, LayerMask.NameToLayer (weaponLayerName));
 			FPSViewWeaponIK.SwitchWeapon (currentWeapon);
+			//Set up the correct transform for the weapon sway
 			currentGraphics.SetPosition (currentWeapon.LocalIKRightHandHold.parent);
 		} else {
 			NetworkWeaponIK.SwitchWeapon (currentWeapon);
 		}
+		//Set up the new weapon on the PlayerShoot component
 		playerShoot.SwitchWeapon (currentWeapon);
 	}
 
