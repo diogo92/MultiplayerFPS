@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/*
+ * Simple waypoint based movement for moving platforms
+ */
 public class MovingPlatform : MonoBehaviour 
 {
 	private Rigidbody rb;

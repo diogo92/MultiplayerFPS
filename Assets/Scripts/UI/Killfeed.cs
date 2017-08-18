@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 /*
- * Kill feed to show player when a player has killed another
+ * Kill feed UI to show player when a player has killed another
  */
 public class Killfeed : MonoBehaviour {
 

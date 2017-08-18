@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+ * World Space UI that shows the player's HP and name
+ */
 public class PlayerNameplate : MonoBehaviour {
 
 	[SerializeField]
@@ -15,18 +17,20 @@ public class PlayerNameplate : MonoBehaviour {
 	private PlayerManager player;
 
 	public Camera cam; 
+
+	//Scaling of the object
 	public float objectScale = 1.0f; 
+	//Check if we want to change size depending on distance from the player
 	public bool resizeDistance = false;
+	//Original scale vector
 	private Vector3 initialScale; 
 
-	// set the initial scale, and setup reference camera
 	void Start ()
 	{
 		cam = Camera.main;
-		// record initial scale, use this as a basis
+
 		initialScale = transform.localScale; 
 
-		// if no specific camera, grab the default camera
 		if (cam == null)
 			cam = Camera.main; 
 	}
@@ -39,7 +43,9 @@ public class PlayerNameplate : MonoBehaviour {
 	}
 
 	void CameraFacingBillboard(){
+		//Always face the player
 		transform.LookAt (transform.position + cam.transform.rotation * Vector3.forward, cam.transform.rotation * Vector3.up);
+
 		if (resizeDistance) {
 			Plane plane = new Plane(cam.transform.forward, cam.transform.position); 
 			float dist = plane.GetDistanceToPoint(transform.position); 

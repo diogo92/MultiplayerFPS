@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*
- * The kill feed item itself, that is the UI representation of the kill feed
+ * The kill feed UI item
  */
 public class KillfeedItem : MonoBehaviour {
 

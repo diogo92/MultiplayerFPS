@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Scoreboard UI element
+ */
 public class PlayerScoreboardItem : MonoBehaviour {
 
 	[SerializeField]

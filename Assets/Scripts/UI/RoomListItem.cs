@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using UnityEngine.Networking.Match;
 
+/*
+ * Room list UI item
+ */
 public class RoomListItem : MonoBehaviour {
 
 	public delegate void JoinRoomDelegate(MatchInfoSnapshot _match);
