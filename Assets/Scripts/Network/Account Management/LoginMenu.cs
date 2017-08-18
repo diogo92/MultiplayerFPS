@@ -11,9 +11,9 @@ public class LoginMenu : MonoBehaviour {
 	////These variables are set in the Inspector:
 
 	//they are enabled and disabled to show and hide the different parts of the UI
-	public GameObject login_object;
+	/*public GameObject login_object;
 	public GameObject register_object;
-	public GameObject loading_object;
+	public GameObject loading_object;*/
 
 	//these are the login input fields:
 	public UnityEngine.UI.InputField input_login_username;
@@ -57,7 +57,7 @@ public class LoginMenu : MonoBehaviour {
 
 	void Update () {
 
-		if (isDatabaseSetup == true) {
+		/*if (isDatabaseSetup == true) {
 
 			//enables and disables the defferent objects to show correct part
 			if (part == 0) {
@@ -79,7 +79,7 @@ public class LoginMenu : MonoBehaviour {
 				loading_object.gameObject.SetActive (true);
 			}
 
-		}
+		}*/
 
 	}
 
@@ -154,22 +154,22 @@ public class LoginMenu : MonoBehaviour {
 
 				UserAccountManager.instance.LogIn(username, password);
 			}
-			if (returned == "UserError") {
+			else if (returned == "UserError") {
 				//Account with username not found in database
 				login_error.text = "Username not found";
 				part = 0; //back to login UI
 			}
-			if (returned == "PassError") {
+			else if (returned == "PassError") {
 				//Account with username found, but password incorrect
 				part = 0; //back to login UI
 				login_error.text = "Incorrect Password";
 			}
-			if (returned == "ContainsUnsupportedSymbol") {
+			else if (returned == "ContainsUnsupportedSymbol") {
 				//One of the parameters contained a - symbol
 				part = 0; //back to login UI
 				login_error.text = "Unsupported Symbol '-'";
 			}
-			if (returned == "Error") {
+			else if (returned == "Error") {
 				//Account Not Created, another error occurred
 				part = 0; //back to login UI
 				login_error.text = "Database Error. Try again later.";
