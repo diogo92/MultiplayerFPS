@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+
+/*
+ * Handle player physics and movement
+ */
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(ConfigurableJoint))]
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour {
 
+	//Player move speed
 	[SerializeField]
 	private float speed = 5f;
+
+	//Mouse Sensitivity
 	[SerializeField]
 	private float lookSensitivity = 3f;
+
+	/* Thruster stats */
 	[SerializeField]
 	private float thrusterForce = 1000f;
-
 	[SerializeField]
 	private float thrusterFuelBurnSpeed = 1f;
 	[SerializeField]
@@ -32,15 +40,18 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	private float jointMaxForce = 40f;
 
-	//Component caching
+	/* Component caching */
 	private PlayerMotor motor;
 	private ConfigurableJoint joint;
 	private WeaponManager weaponManager;
 
+	//FPS view animator for the local player client
 	[SerializeField]
 	private Animator FPSViewAnim;
+	//Full player model animator for network
 	[SerializeField]
 	private Animator NetworkModelAnim;
+
 	void Start(){
 		weaponManager = GetComponent<WeaponManager> ();
 		FPSViewAnim = GetComponent<Animator> ();
@@ -50,6 +61,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update(){
+		//If game is paused, stop moving
 		if (PauseMenu.IsOn) {
 			if (Cursor.lockState != CursorLockMode.None)
 				Cursor.lockState = CursorLockMode.None;
@@ -61,6 +73,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Cursor.lockState != CursorLockMode.Locked)
 			Cursor.lockState = CursorLockMode.Locked;
+		
 		//Check for ground and set spring target position
 		RaycastHit _hit;
 		if (Physics.Raycast (transform.position, Vector3.down, out _hit, 100f,environmentMask)) {
@@ -73,18 +86,22 @@ public class PlayerController : MonoBehaviour {
 		float _xMov = Input.GetAxis("Horizontal");
 		float _zMov = Input.GetAxis("Vertical");
 
+		/* Update animator variables */
 		FPSViewAnim.SetFloat ("Forward", _zMov);
 		FPSViewAnim.SetFloat ("Sideways", _xMov);
 
 		NetworkModelAnim.SetFloat ("Forward", _zMov);
 		NetworkModelAnim.SetFloat ("Sideways", _xMov);
 
+		/* Velocity calculation */
 		Vector3 _movHorizontal = transform.right * _xMov;
 		Vector3 _movVertical = transform.forward * _zMov;
 
 		Vector3 _velocity = (_movHorizontal + _movVertical) * speed;
 
+		// Increase crosshair spread on movement
 		CrosshairManager.instance.playerSpeed = _velocity.magnitude;
+
 		motor.Move (_velocity);
 
 		//Turning around

@@ -55,6 +55,7 @@ public class WeaponIK : MonoBehaviour
 				gunPivot.localRotation = Quaternion.Euler (OriginalPivotRotation + weapotRotationCorrection);
 			}
 		}
+			
 	}
 
 	/* Handle the IK targeting */

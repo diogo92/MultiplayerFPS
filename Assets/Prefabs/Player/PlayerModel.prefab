@@ -28100,7 +28100,7 @@ Animator:
   m_GameObject: {fileID: 1019593329988858}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f12f2d44b2688054986e54861cc211dc, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0b71cf24adeebc1429a56dd5a47fd456, type: 2}
+  m_Controller: {fileID: 9100000, guid: c5a499b0def7e834d9f4ed1c8ce3147e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -28139,7 +28139,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 198621567120072118}
   hitEffectPrefab: {fileID: 1404562657640344, guid: 122387827fb3e09468771a7029e8e68a,
     type: 2}
-  amount: 0.02
   maxAmount: 0.04
   smoothAmount: 1
   movementX: 0
@@ -28190,8 +28189,8 @@ MonoBehaviour:
     crosshairNormalSize: 0.05
     crosshairShootingSize: 0.07
     ADSFOV: 40
-    hasScope: 0
     ADSSpeed: 5
+    hasScope: 0
     VerticalRecoil: 0.1
     HorizontalRecoil: 0.1
     bullets: 0
@@ -28215,14 +28214,14 @@ MonoBehaviour:
     crosshairNormalSize: 0.1
     crosshairShootingSize: 0.2
     ADSFOV: 45
-    hasScope: 0
     ADSSpeed: 10
+    hasScope: 0
     VerticalRecoil: 0.5
     HorizontalRecoil: 0.5
     bullets: 0
     graphics: {fileID: 1512080066855254}
     pivot: {fileID: 4314845503383062}
-    ADSPosition: {x: -0.075, y: 0.112, z: 0.03}
+    ADSPosition: {x: -0.1102, y: 0.045, z: 0.0905}
     ADSRotation: {x: 85.552, y: -167.448, z: -171}
     ADSRemotePosition: {x: -0.063, y: 0.02, z: 0.081}
     ADSRemoteRotation: {x: 101.074, y: 316.597, z: 331.837}
@@ -28240,8 +28239,8 @@ MonoBehaviour:
     crosshairNormalSize: 0.07
     crosshairShootingSize: 0.15
     ADSFOV: 15
-    hasScope: 1
     ADSSpeed: 8
+    hasScope: 1
     VerticalRecoil: 1
     HorizontalRecoil: 1
     bullets: 0
@@ -28312,29 +28311,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a0595961221ba489a0cadeca6baed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 4064983738158696}
   handMount: {fileID: 4509765644603170}
   shoulder: {fileID: 4417533934195480}
   gunPivot: {fileID: 4350674617314670}
-  weaponHolder: {fileID: 4420509007745032}
   IKHolders: {fileID: 4162096640246154}
   PlayerRightHandHold: {fileID: 0}
   PlayerLeftHandHold: {fileID: 0}
-  threshold: 10
-  smoothing: 5
-  weaponCorrectionOffset: {x: 0, y: 0, z: 0}
-  weapotRotationCorrection: {x: 0, y: 0, z: 0}
-  anim: {fileID: 0}
-  DebugCorrectionOffset: 0
   IsFirstPersonView: 0
   spineAux: {fileID: 4620619250164918}
   spineBone: {fileID: 4564132628095386}
-  amount: 0.02
-  maxAmount: 0.06
-  smoothAmount: 6
-  movementX: 0
-  movementY: 0
   weaponManager: {fileID: 0}
+  weaponCorrectionOffset: {x: 0, y: 0, z: 0}
+  weapotRotationCorrection: {x: 0, y: 0, z: 0}
+  DebugCorrectionOffset: 0
 --- !u!114 &114139531666984464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28408,29 +28397,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a0595961221ba489a0cadeca6baed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 4064983738158696}
   handMount: {fileID: 4209088887961964}
   shoulder: {fileID: 4423012893012252}
   gunPivot: {fileID: 4161334781186510}
-  weaponHolder: {fileID: 4420509007745032}
   IKHolders: {fileID: 4162096640246154}
   PlayerRightHandHold: {fileID: 0}
   PlayerLeftHandHold: {fileID: 0}
-  threshold: 10
-  smoothing: 5
-  weaponCorrectionOffset: {x: 0, y: 0, z: 0}
-  weapotRotationCorrection: {x: 0, y: 0, z: 0}
-  anim: {fileID: 0}
-  DebugCorrectionOffset: 0
   IsFirstPersonView: 1
   spineAux: {fileID: 0}
   spineBone: {fileID: 0}
-  amount: 0.02
-  maxAmount: 0.06
-  smoothAmount: 6
-  movementX: 0
-  movementY: 0
   weaponManager: {fileID: 0}
+  weaponCorrectionOffset: {x: 0, y: 0, z: 0}
+  weapotRotationCorrection: {x: 0, y: 0, z: 0}
+  DebugCorrectionOffset: 0
 --- !u!114 &114399582621435802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28581,7 +28560,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 198000562998328272}
   hitEffectPrefab: {fileID: 1404562657640344, guid: 122387827fb3e09468771a7029e8e68a,
     type: 2}
-  amount: 0.02
   maxAmount: 0.01
   smoothAmount: 3
   movementX: 0
@@ -28636,29 +28614,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a0595961221ba489a0cadeca6baed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 4064983738158696}
   handMount: {fileID: 4424241253108590}
   shoulder: {fileID: 0}
   gunPivot: {fileID: 4350674617314670}
-  weaponHolder: {fileID: 0}
   IKHolders: {fileID: 0}
   PlayerRightHandHold: {fileID: 0}
   PlayerLeftHandHold: {fileID: 0}
-  threshold: 10
-  smoothing: 5
-  weaponCorrectionOffset: {x: 0, y: 0, z: 0}
-  weapotRotationCorrection: {x: 0, y: 0, z: 0}
-  anim: {fileID: 0}
-  DebugCorrectionOffset: 0
   IsFirstPersonView: 0
   spineAux: {fileID: 0}
   spineBone: {fileID: 0}
-  amount: 0.02
-  maxAmount: 0.06
-  smoothAmount: 6
-  movementX: 0
-  movementY: 0
   weaponManager: {fileID: 0}
+  weaponCorrectionOffset: {x: 0, y: 0, z: 0}
+  weapotRotationCorrection: {x: 0, y: 0, z: 0}
+  DebugCorrectionOffset: 0
 --- !u!114 &114803127402275214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28777,7 +28745,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 198950046029363152}
   hitEffectPrefab: {fileID: 1404562657640344, guid: 122387827fb3e09468771a7029e8e68a,
     type: 2}
-  amount: 0.02
   maxAmount: 0.04
   smoothAmount: 1
   movementX: 0

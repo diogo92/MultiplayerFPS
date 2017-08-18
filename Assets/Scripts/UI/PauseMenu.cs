@@ -4,8 +4,12 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 
+/*
+ * Pause menu manager
+ */
 public class PauseMenu : MonoBehaviour {
 
+	//Check if game is paused
 	public static bool IsOn = false;
 
 	private NetworkManager networkManager;
@@ -13,6 +17,8 @@ public class PauseMenu : MonoBehaviour {
 	void Start(){
 		networkManager = NetworkManager.singleton;
 	}
+
+	/** Behaviour for the Leave Room button, to properly leave a match **/
 	public void LeaveRoom(){
 
 		MatchInfo matchInfo = networkManager.matchInfo;
