@@ -74,8 +74,14 @@ public class JoinGame : MonoBehaviour {
 	}
 
 	public void JoinRoom(MatchInfoSnapshot match){
-		networkManager.matchMaker.JoinMatch (match.networkId, "", "", "", 0, 0, networkManager.OnMatchJoined);
+		LoadingScreen.ActivateLoadScreen ();
+		networkManager.matchMaker.JoinMatch (match.networkId, "", "", "", 0, 0,OnMatchJoined);
 		StartCoroutine (WaitForJoin ());
+	}
+
+	void OnMatchJoined(bool success, string extendedInfo, MatchInfo matchInfo){
+		LoadingScreen.instance.LoadingDone = true;
+		networkManager.OnMatchJoined (success, extendedInfo, matchInfo);
 	}
 
 	IEnumerator WaitForJoin(){

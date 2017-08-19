@@ -22,7 +22,12 @@ public class PauseMenu : MonoBehaviour {
 	public void LeaveRoom(){
 
 		MatchInfo matchInfo = networkManager.matchInfo;
-		networkManager.matchMaker.DropConnection (matchInfo.networkId, matchInfo.nodeId, 0, networkManager.OnDropConnection);
+		networkManager.matchMaker.DropConnection (matchInfo.networkId, matchInfo.nodeId, 0, OnDropConnection);
 		networkManager.StopHost ();
+	}
+
+	void OnDropConnection(bool success, string extendedInfo){
+		LoadingScreen.LoadScene ("Lobby");
+		networkManager.OnDropConnection (success, extendedInfo);
 	}
 }
