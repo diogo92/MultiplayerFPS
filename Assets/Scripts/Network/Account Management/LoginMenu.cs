@@ -83,6 +83,10 @@ public class LoginMenu : MonoBehaviour {
 
 	}
 
+	public void LoadLobby(){
+		LoadingScreen.LoadScene("Lobby");
+	}
+
 	void blankErrors () {
 		//blanks all error texts when part is changed e.g. login > Register
 		login_error.text = "";

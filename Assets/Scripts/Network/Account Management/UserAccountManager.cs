@@ -53,7 +53,7 @@ public class UserAccountManager : MonoBehaviour
 
 	public string loggedInSceneName = "Lobby";
 
-	public string loggedOutSceneName = "LoginMenu";
+	public string loggedOutSceneName = "MainMenu";
 
 
 
@@ -78,8 +78,8 @@ public class UserAccountManager : MonoBehaviour
 		Debug.Log("User logged out!");
 
 
-
-		SceneManager.LoadScene(loggedOutSceneName);
+		LoadingScreen.LoadScene(loggedOutSceneName);
+		//SceneManager.LoadScene(loggedOutSceneName);
 
 	}
 
@@ -102,8 +102,8 @@ public class UserAccountManager : MonoBehaviour
 		Debug.Log("Logged in as " + username);
 
 
-
-		SceneManager.LoadScene(loggedInSceneName);
+		LoadingScreen.LoadScene(loggedInSceneName);
+		//SceneManager.LoadScene(loggedInSceneName);
 
 	}
 

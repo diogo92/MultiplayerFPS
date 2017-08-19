@@ -13,5 +13,7 @@ public class UserAccountLobby : MonoBehaviour {
 	public void LogOut(){
 		if(UserAccountManager.IsLoggedIn)
 			UserAccountManager.instance.LogOut ();
+		else
+			LoadingScreen.LoadScene("MainMenu");
 	}
 }

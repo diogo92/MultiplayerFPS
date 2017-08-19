@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: decae5d796a04394fb5a396f2b70294d
-timeCreated: 1481051132
+timeCreated: 1487701896
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Chapter Normal
-    21300002: Chapter Hovered
+    21300000: Stock
+    21300002: BF 4
+    21300004: CS GO
+    21300006: Loading Gradient
+    21300008: Loading Circle
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -61,13 +64,13 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
-    maxTextureSize: 1024
-    textureFormat: -1
+    maxTextureSize: 2048
+    textureFormat: 12
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
   - buildTarget: Android
     maxTextureSize: 1024
     textureFormat: -1
@@ -88,26 +91,65 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chapter Normal
+      name: Stock
       rect:
         serializedVersion: 2
         x: 0
-        y: 724
-        width: 500
-        height: 300
+        y: 1688
+        width: 540
+        height: 360
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chapter Hovered
+      name: BF 4
       rect:
         serializedVersion: 2
         x: 0
-        y: 415
-        width: 500
-        height: 300
+        y: 1319
+        width: 540
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CS GO
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 950
+        width: 540
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Loading Gradient
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 1920
+        height: 497
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Loading Circle
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 1548
+        width: 499
+        height: 500
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
