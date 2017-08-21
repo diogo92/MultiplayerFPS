@@ -44,7 +44,6 @@ public class LoadingScreen : MonoBehaviour
         instance.loadingProcess = SceneManager.LoadSceneAsync(sceneName);
         // Don't switch scene even after loading is completed
         instance.loadingProcess.allowSceneActivation = false;
-
     }
  
 	public static void ActivateLoadScreen(string _text){

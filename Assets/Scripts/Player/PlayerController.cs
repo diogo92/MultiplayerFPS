@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update(){
+		lookSensitivity = GameSettings.instance.GetMouseSensitivity ();
 		//If game is paused, stop moving
 		if (PauseMenu.IsOn) {
 			if (Cursor.lockState != CursorLockMode.None)
