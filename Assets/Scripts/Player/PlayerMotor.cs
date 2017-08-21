@@ -23,9 +23,30 @@ public class PlayerMotor : NetworkBehaviour {
 	private float currentCameraRotationX = 0f;
 	private Vector3 thrusterForce = Vector3.zero;
 
+
+
+	/* Crouching*/
+	public float CrouchSmooth = 2f;
+	private float originalCamYPosition;
+	private float originalColHeight;
+	private float originalColYPos;
+	private CapsuleCollider col;
+	[SerializeField]
+	private Animator NetworkModelAnim;
+	[SyncVar]
+	bool isCrouching;
+
+
 	private Rigidbody rb;
+
 	void Start(){
-		rb = GetComponent<Rigidbody> ();
+		if (isLocalPlayer) {
+			rb = GetComponent<Rigidbody> ();
+			col = GetComponent<CapsuleCollider> ();
+			originalCamYPosition = cam.transform.localPosition.y;
+			originalColHeight = col.height;
+			originalColYPos = col.center.y;
+		}
 	}
 
 	public void Move(Vector3 _velocity){
@@ -52,10 +73,17 @@ public class PlayerMotor : NetworkBehaviour {
 		thrusterForce = _thrusterForce;
 	}
 
-	void FixedUpdate(){
+	void Update(){
+		if (isLocalPlayer) {
+			DoCrouch ();
+		}
+	}
 
-		PerformMovement ();
-		PerformRotation ();
+	void FixedUpdate(){
+		if (isLocalPlayer) {
+			PerformMovement ();
+			PerformRotation ();
+		}
 	}
 
 	void PerformMovement(){
@@ -78,8 +106,22 @@ public class PlayerMotor : NetworkBehaviour {
 		}
 	}
 
+	void DoCrouch(){
+		if (isCrouching) {
+			cam.transform.localPosition = Vector3.Slerp (cam.transform.localPosition, new Vector3 (0, originalCamYPosition / 2f, 0), Time.deltaTime * CrouchSmooth);
+			col.height = Mathf.Lerp (col.height, originalColHeight / 2f, Time.deltaTime * CrouchSmooth);
+			col.center = Vector3.Slerp(col.center,new Vector3(0,originalColYPos/2f,0),Time.deltaTime * CrouchSmooth);
+		} else {
+			cam.transform.localPosition = Vector3.Slerp (cam.transform.localPosition, new Vector3 (0, originalCamYPosition, 0), Time.deltaTime * CrouchSmooth);
+			col.height = Mathf.Lerp (col.height, originalColHeight, Time.deltaTime * CrouchSmooth);
+			col.center = Vector3.Slerp(col.center,new Vector3(0,originalColYPos,0),Time.deltaTime * CrouchSmooth);
+		}			
+		NetworkModelAnim.SetBool ("Crouching",isCrouching);
+	}
+
 	void LateUpdate(){
 		//if (!isLocalPlayer) {
+		if (isLocalPlayer) {
 			float rotval = currentCameraRotationX;
 			float clampedVal = Mathf.Clamp (currentCameraRotationX, -30, 30);
 			cam.transform.localEulerAngles = new Vector3 (clampedVal, 0, 0);
@@ -89,6 +131,14 @@ public class PlayerMotor : NetworkBehaviour {
 			Vector3 final = SpineBoneAux.rotation.eulerAngles;
 			//final.z = Mathf.Clamp (final.z,-30,30);
 			SpineBoneAux.rotation = Quaternion.Euler (final);
+		}
 		//}
 	}
+
+	[Command]
+	public void CmdCrouch(bool _isCrouching){
+		isCrouching = _isCrouching;
+	}
+
+
 }

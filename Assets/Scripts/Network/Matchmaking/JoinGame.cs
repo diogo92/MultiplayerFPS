@@ -74,13 +74,13 @@ public class JoinGame : MonoBehaviour {
 	}
 
 	public void JoinRoom(MatchInfoSnapshot match){
-		LoadingScreen.ActivateLoadScreen ();
+		LoadingScreen.ActivateLoadScreen ("Attempting to join match");
 		networkManager.matchMaker.JoinMatch (match.networkId, "", "", "", 0, 0,OnMatchJoined);
 		StartCoroutine (WaitForJoin ());
 	}
 
 	void OnMatchJoined(bool success, string extendedInfo, MatchInfo matchInfo){
-		LoadingScreen.instance.LoadingDone = true;
+		//LoadingScreen.instance.LoadingDone = true;
 		networkManager.OnMatchJoined (success, extendedInfo, matchInfo);
 	}
 
@@ -102,7 +102,7 @@ public class JoinGame : MonoBehaviour {
 			networkManager.matchMaker.DropConnection (matchInfo.networkId, matchInfo.nodeId, 0, networkManager.OnDropConnection);
 			networkManager.StopHost ();
 		}
-
+		LoadingScreen.instance.LoadingDone = true;
 		RefreshRoomList ();
 	}
 }

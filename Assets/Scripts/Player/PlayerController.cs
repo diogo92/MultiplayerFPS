@@ -119,7 +119,6 @@ public class PlayerController : MonoBehaviour {
 		motor.RotateCamera (_cameraRotationX);
 
 		//Weapon Sway
-		Debug.Log(_xMov);
 		if (weaponManager.GetCurrentGraphics () != null) {
 				weaponManager.GetCurrentGraphics ().SetMovement ((_xRot * lookSensitivity)  - (_xMov * speed/2f), (_yRot * lookSensitivity) + (_xMov * speed/2f));
 		}
@@ -137,6 +136,13 @@ public class PlayerController : MonoBehaviour {
 			thrusterFuelAmount += thrusterFuelRegenSpeed * Time.deltaTime;
 			SetJointSettings (jointSpring);
 		}
+		if (Input.GetButton ("Crouch")) {
+			motor.CmdCrouch (true);
+		} else {
+			motor.CmdCrouch (false);
+		}
+
+
 		thrusterFuelAmount = Mathf.Clamp01 (thrusterFuelAmount);
 		motor.ApplyThruster (_thrusterForce);
 	}

@@ -21,7 +21,7 @@ public class HostGame : NetworkBehaviour {
 	}
 
 	public void CreateRoom(){
-		LoadingScreen.ActivateLoadScreen ();
+		LoadingScreen.ActivateLoadScreen ("Creating a match");
 		if (roomName != "" && roomName != null) {
 			Debug.Log ("Creating Room: " + roomName + " with room for " + roomSize + " players");
 			//Create room
@@ -30,7 +30,7 @@ public class HostGame : NetworkBehaviour {
 	}
 
 	void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo ){
-		LoadingScreen.instance.LoadingDone = true;
+		//LoadingScreen.instance.LoadingDone = true;
 		networkManager.OnMatchCreate (success, extendedInfo, matchInfo);
 
 	}

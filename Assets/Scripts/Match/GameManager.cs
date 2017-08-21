@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
@@ -16,6 +16,15 @@ public class GameManager : MonoBehaviour {
 
 	void Awake(){
 		instance = this;
+	}
+
+	void OnEnable(){
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
+
+	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		LoadingScreen.instance.LoadingDone = true;
 	}
 
 	public void SetSceneCameraState(bool state){

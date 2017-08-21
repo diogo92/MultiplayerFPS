@@ -13,7 +13,9 @@ public class LoadingScreen : MonoBehaviour
 	public Image downPanel;
 	public Image loader;
     public Text status;
+	public Text description;
 	public Slider progressBar;
+
 
 	[Header("SETTINGS")]
     public float animationSpeed = 1.25f;
@@ -21,7 +23,7 @@ public class LoadingScreen : MonoBehaviour
     // Scene loading process
     private AsyncOperation loadingProcess;
  
-	static bool ShowProgress = true;
+	bool ShowProgress = true;
 	public bool LoadingDone = false;
     // Load a new scene
 
@@ -45,8 +47,10 @@ public class LoadingScreen : MonoBehaviour
 
     }
  
-	public static void ActivateLoadScreen(){
-		ShowProgress = false;
+	public static void ActivateLoadScreen(string _text){
+		instance.description.text = _text;
+		instance.status.text = "";
+		instance.ShowProgress = false;
 		DontDestroyOnLoad(instance.gameObject);
 		instance.gameObject.SetActive(true);
 	}

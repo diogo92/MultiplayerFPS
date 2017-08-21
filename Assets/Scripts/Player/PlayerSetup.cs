@@ -8,6 +8,8 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(PlayerController))]
 public class PlayerSetup : NetworkBehaviour {
 
+
+
 	//Components that will be disabled over the network
 	[SerializeField]
 	Behaviour[] componentsToDisable;
@@ -41,7 +43,9 @@ public class PlayerSetup : NetworkBehaviour {
 	[HideInInspector]
 	public GameObject playerUIInstance;
 
+
 	void Start () {
+		
 		if (isLocalPlayer) {
 			SetupLocalPlayer ();
 		} else {
@@ -136,4 +140,7 @@ public class PlayerSetup : NetworkBehaviour {
 			GameManager.instance.SetSceneCameraState (true);
 		GameManager.UnRegisterPlayer (transform.name);
 	}
+
+
+
 }
