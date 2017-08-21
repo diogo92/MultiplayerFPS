@@ -36,8 +36,11 @@ public class WeaponManager : NetworkBehaviour {
 	private PlayerWeapon currentWeapon;
 	//WeaponGraphics script of the currently held weapon
 	private WeaponGraphics currentGraphics;
-	//PlayerShoot script for switching weapon
+
+	/* Component caching */
 	private PlayerShoot playerShoot;
+	private PlayerSound playerSound;
+
 
 	//Reference to the animator to be used, which is the first person view model for the local player, and the network player model for remote players
 	[SerializeField]
@@ -54,6 +57,7 @@ public class WeaponManager : NetworkBehaviour {
 			weaponParents [i] = weapons [i].graphics.transform;
 		}
 		playerShoot = GetComponent<PlayerShoot> ();
+		playerSound = GetComponent<PlayerSound> ();
 		/*
 		 *	If it's the local player, the current weapon defaults to the first in the array of weapons, and the animator is the prefab parent's, because it will be controlled by the firt player view model
 		 *	Then set the correct layer for the objects we want to be drawn only by the weapon camera, and the WeaponManager reference for the WeaponIK script as this.
@@ -136,6 +140,7 @@ public class WeaponManager : NetworkBehaviour {
 	void RpcOnReload(){
 		StartCoroutine (Reload_Coroutine ());
 		animator.SetTrigger ("Reload");
+		playerSound.PlayReloadSound ();
 	}
 
 	/** Weapon switch server command **/

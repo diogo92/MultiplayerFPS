@@ -15,10 +15,11 @@ public class PlayerShoot : NetworkBehaviour {
 	private string weaponLayerName = "Weapon";
 
 	/* Component caching */
-	PlayerMotor motor;
+	private PlayerMotor motor;
 	private PlayerWeapon currentWeapon;
 	private WeaponManager weaponManager;
 	private Animator anim;
+	private PlayerSound playerSound;
 
 	//Reference to the animator of the player model (FPS view model if is local player, or full player model if not)
 	[SerializeField]
@@ -85,6 +86,7 @@ public class PlayerShoot : NetworkBehaviour {
 		motor = GetComponent<PlayerMotor> ();
 		anim = GetComponent<Animator> ();
 		weaponManager = GetComponent<WeaponManager> ();
+		playerSound = GetComponent<PlayerSound> ();
 		currentWeapon = weaponManager.GetCurrentWeapon ();
 	}
 
@@ -216,6 +218,7 @@ public class PlayerShoot : NetworkBehaviour {
 	[ClientRpc]
 	void RpcDoShootEffect(){
 		weaponManager.GetCurrentGraphics ().muzzleFlash.Play ();
+		playerSound.PlayShootSound ();
 	}
 
 

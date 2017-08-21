@@ -9,6 +9,10 @@ public class PlayerWeapon {
 	//Weapon name, must match the name of the corresponding firing animation on the parent of the weapon IK transforms
 	public string name = "Glock";
 
+	/* Sound clips */
+	public AudioClip shootSound;
+	public AudioClip reloadSound;
+
 	/* Weapon stats */
 	public int damage = 10;
 	public float range = 100f;

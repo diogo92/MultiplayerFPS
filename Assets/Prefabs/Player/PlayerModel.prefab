@@ -3450,6 +3450,7 @@ GameObject:
   - component: {fileID: 54630641139041188}
   - component: {fileID: 136113881668211906}
   - component: {fileID: 153421762229260726}
+  - component: {fileID: 82702982431869566}
   - component: {fileID: 114824963951157500}
   - component: {fileID: 114447765373013216}
   - component: {fileID: 114931842085026478}
@@ -3465,6 +3466,7 @@ GameObject:
   - component: {fileID: 114399582621435802}
   - component: {fileID: 114809567559951578}
   - component: {fileID: 114343728504889118}
+  - component: {fileID: 114311585951403864}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Player
@@ -27999,6 +28001,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410085911471518}
   m_Enabled: 1
+--- !u!82 &82702982431869566
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297923809587490}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!92 &92862285496652456
 Behaviour:
   m_ObjectHideFlags: 1
@@ -28182,6 +28264,8 @@ MonoBehaviour:
   weaponLayerName: Weapon
   weapons:
   - name: Pistol
+    shootSound: {fileID: 8300000, guid: 819880c3f2fb764439ae376717f51aa6, type: 3}
+    reloadSound: {fileID: 8300000, guid: 7a8d70e256c66854eb30772d05359fce, type: 3}
     damage: 10
     range: 100
     fireRate: 1
@@ -28207,6 +28291,8 @@ MonoBehaviour:
     PivotCorrectionOffset: {x: 0.155, y: -0.24, z: 0}
     RotationCorrectionOffset: {x: 7.34, y: -108.95, z: -114.1}
   - name: Blaster
+    shootSound: {fileID: 8300000, guid: 9d4e3835ee340d048a4b7f5171a74806, type: 3}
+    reloadSound: {fileID: 8300000, guid: 7a8d70e256c66854eb30772d05359fce, type: 3}
     damage: 5
     range: 100
     fireRate: 10
@@ -28232,6 +28318,8 @@ MonoBehaviour:
     PivotCorrectionOffset: {x: 0.12, y: -0.2, z: -0.01}
     RotationCorrectionOffset: {x: -1.9, y: -3.98, z: 12.04}
   - name: Rifle
+    shootSound: {fileID: 8300000, guid: bab69a5b214acbd499aff3b146d45f3f, type: 3}
+    reloadSound: {fileID: 8300000, guid: 7a8d70e256c66854eb30772d05359fce, type: 3}
     damage: 10
     range: 10
     fireRate: 5
@@ -28388,6 +28476,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114311585951403864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297923809587490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff254779970dfc45b4afcdeca48181c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114343728504889118
 MonoBehaviour:
   m_ObjectHideFlags: 1
