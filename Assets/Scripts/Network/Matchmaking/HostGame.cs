@@ -10,10 +10,20 @@ public class HostGame : NetworkBehaviour {
 
 	private NetworkManager networkManager;
 
+	public string LevelToCreate;
+
+	[SerializeField]
+	private string[] sceneNames;
+
 	void Start(){
 		networkManager = NetworkManager.singleton;
 		if (networkManager.matchMaker == null)
 			networkManager.StartMatchMaker ();
+		if(PlayerPrefs.HasKey("LastSelectedHostLevel"))
+			SetLevelToCreate (PlayerPrefs.GetInt("LastSelectedHostLevel"));
+		else
+			SetLevelToCreate (0);
+
 	}
 
 	public void SetRoomName(string _name){
@@ -33,5 +43,12 @@ public class HostGame : NetworkBehaviour {
 		//LoadingScreen.instance.LoadingDone = true;
 		networkManager.OnMatchCreate (success, extendedInfo, matchInfo);
 
+	}
+
+	public void SetLevelToCreate(int _level){
+		if (_level <= sceneNames.Length) {
+			networkManager.onlineScene = sceneNames [_level];
+			PlayerPrefs.SetInt ("LastSelectedHostLevel", _level);
+		}
 	}
 }
