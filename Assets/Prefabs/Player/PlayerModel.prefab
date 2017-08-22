@@ -28585,7 +28585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lookSensitivity: 3
-  thrusterForce: 1300
+  thrusterForce: 3000
   thrusterFuelBurnSpeed: 1
   thrusterFuelRegenSpeed: 0.3
   environmentMask:

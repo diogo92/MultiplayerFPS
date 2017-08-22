@@ -21,16 +21,29 @@ public class WeaponSwitch : NetworkBehaviour {
 		//Disable switching if game is paused
 		if (PauseMenu.IsOn)
 			return;
-		if (Input.GetAxis("Mouse ScrollWheel")> 0) {
+		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
 			currentWeaponIndex++;
 			if (currentWeaponIndex >= wm.weapons.Length)
 				currentWeaponIndex = 0;
 			SwitchWeapon (currentWeaponIndex);
-		} else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+		} else if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
 			currentWeaponIndex--;
 			if (currentWeaponIndex < 0)
-				currentWeaponIndex = wm.weapons.Length-1;
+				currentWeaponIndex = wm.weapons.Length - 1;
 			SwitchWeapon (currentWeaponIndex);
+		} else {
+			if (Input.inputString != "") {
+				char inputChar = Input.inputString.ToCharArray () [0];
+				if (inputChar > '0' && inputChar <= '9') {
+					int inputNum = int.Parse (inputChar.ToString ()) - 1;
+					if (inputNum < wm.weapons.Length) {
+						currentWeaponIndex = inputNum;
+						SwitchWeapon (currentWeaponIndex);
+					}
+					
+				}
+			}
+				
 		}
 	}
 

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour {
 
 	[SerializeField]
-	RectTransform thrusterFuelFill;
+	Image thrusterFuelFill;
 
 	[SerializeField]
-	RectTransform healthbarFill;
+	Image healthbarFill;
 
 	[SerializeField]
 	Text ammoText;
@@ -32,11 +32,11 @@ public class PlayerUI : MonoBehaviour {
 
 	void SetFuelAmount(float _amount){
 		
-		thrusterFuelFill.localScale = new Vector3 (1f, _amount, 1f);
+		thrusterFuelFill.fillAmount =_amount;
 	}
 
 	void SetHealthAmount(float _amount){
-		healthbarFill.localScale = new Vector3 (1f, _amount, 1f);
+		healthbarFill.fillAmount = _amount;
 	}
 
 	void SetAmmoAmount(int _amount){
