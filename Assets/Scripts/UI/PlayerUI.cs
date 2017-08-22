@@ -20,6 +20,12 @@ public class PlayerUI : MonoBehaviour {
 	[SerializeField]
 	GameObject scoreBoard;
 
+	[SerializeField]
+	Text nameText;
+
+	[SerializeField]
+	Image playerImage;
+
 	private PlayerManager player;
 	private PlayerController controller;
 	private WeaponManager weaponManager;
@@ -28,6 +34,23 @@ public class PlayerUI : MonoBehaviour {
 		player = _player;
 		controller = player.GetComponent<PlayerController> ();
 		weaponManager = player.GetComponent<WeaponManager> ();
+		SetPlayerName (player.name);
+		if (PlayerPrefs.HasKey ("UserAvatarName"))
+			SetPlayerAvatar (PlayerPrefs.GetString("UserAvatarName"));
+			
+	}
+
+	void SetPlayerAvatar(string _imageName){
+		Object[] avatarsObj = Resources.LoadAll ("Avatars",typeof(Sprite));
+		for (int i = 0; i < avatarsObj.Length; i++) {
+			if (((Sprite)avatarsObj [i]).name == _imageName)
+				playerImage.sprite = ((Sprite)avatarsObj [i]);
+		}
+
+	}
+
+	void SetPlayerName(string _name){
+		nameText.text = _name;
 	}
 
 	void SetFuelAmount(float _amount){
