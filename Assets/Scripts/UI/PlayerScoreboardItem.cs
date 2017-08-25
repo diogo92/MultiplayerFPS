@@ -15,9 +15,13 @@ public class PlayerScoreboardItem : MonoBehaviour {
 	[SerializeField]
 	Text deathsText;
 
-	public void Setup(string username, int kills, int deaths){
+	[SerializeField]
+	Image avatar;
+
+	public void Setup(string username, int kills, int deaths/*, Sprite _avatar*/){
 		usernameText.text = username;
 		killsText.text = "Kills: " + kills;
 		deathsText.text = "Deaths: " + deaths;
+		//avatar.sprite = _avatar;
 	}
 }

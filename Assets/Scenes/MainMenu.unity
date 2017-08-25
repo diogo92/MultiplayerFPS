@@ -436,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &77732334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12789,8 +12789,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 772201350}
-        m_MethodName: login_login_Button
+      - m_Target: {fileID: 772201352}
+        m_MethodName: Login
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13317,6 +13317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772201351}
   - component: {fileID: 772201350}
+  - component: {fileID: 772201352}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -13330,7 +13331,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 772201349}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196bb8ec78779fb4db36af6f88a41339, type: 3}
   m_Name: 
@@ -13355,6 +13356,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &772201352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 772201349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bbffeb573ebe5047a252dfa68bf9553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Input_Login_Username: {fileID: 1315969875}
+  Input_Login_Password: {fileID: 1120866655}
+  Input_Register_Username: {fileID: 1825202711}
+  Input_Register_Password: {fileID: 95078238}
+  Input_Register_ConfirmPassword: {fileID: 1625134437}
+  LoginErrorText: {fileID: 2029171917}
+  RegisterErrorText: {fileID: 77732335}
 --- !u!1 &773521369
 GameObject:
   m_ObjectHideFlags: 0
@@ -28855,8 +28874,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 772201350}
-        m_MethodName: register_register_Button
+      - m_Target: {fileID: 772201352}
+        m_MethodName: CreateNewPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29956,6 +29975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2000165548}
   - component: {fileID: 2000165547}
+  - component: {fileID: 2000165549}
   m_Layer: 0
   m_Name: UserAccountManager
   m_TagString: Untagged
@@ -29989,6 +30009,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2000165549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000165546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24f5f267e8bf8c47a987fbf3b730196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registerURL: http://recorded-interview.000webhostapp.com/RegisterPlayer.php
+  loginURL: http://recorded-interview.000webhostapp.com/Login.php
 --- !u!1 &2029171915
 GameObject:
   m_ObjectHideFlags: 0
@@ -30005,7 +30038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2029171916
 RectTransform:
   m_ObjectHideFlags: 0

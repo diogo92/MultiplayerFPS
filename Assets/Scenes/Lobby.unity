@@ -22806,6 +22806,7 @@ MonoBehaviour:
   MouseSensitivity: {fileID: 1715652285}
   PlayerIconOptions: {fileID: 438892248}
   currentPlayerIcon: {fileID: 0}
+  isPlayerUI: 0
 --- !u!1 &1603743967
 GameObject:
   m_ObjectHideFlags: 0

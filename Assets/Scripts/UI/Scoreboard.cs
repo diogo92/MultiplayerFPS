@@ -19,7 +19,7 @@ public class Scoreboard : MonoBehaviour {
 			GameObject go = (GameObject) Instantiate (playerScoreboardItem, playerScoreboardList);
 			PlayerScoreboardItem item = go.GetComponent<PlayerScoreboardItem> ();
 			if (item != null) {
-				item.Setup (player.username, player.kills, player.deaths);
+				item.Setup (player.username, player.kills, player.deaths/*, player.GetPlayerAvatar()*/);
 			}
 		}
 	}
