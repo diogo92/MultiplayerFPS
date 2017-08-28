@@ -3463,7 +3463,6 @@ GameObject:
   - component: {fileID: 114644290768031162}
   - component: {fileID: 114020084437542942}
   - component: {fileID: 114027724667202414}
-  - component: {fileID: 114399582621435802}
   - component: {fileID: 114809567559951578}
   - component: {fileID: 114343728504889118}
   - component: {fileID: 114311585951403864}
@@ -28238,6 +28237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   username: Loading...
+  isLoggedIn: 0
   kills: 0
   deaths: 0
   disableOnDeath:
@@ -28511,17 +28511,6 @@ MonoBehaviour:
   weaponCorrectionOffset: {x: 0, y: 0, z: 0}
   weapotRotationCorrection: {x: 0, y: 0, z: 0}
   DebugCorrectionOffset: 0
---- !u!114 &114399582621435802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1297923809587490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3379c3e752bfa3d458adda312de1c6cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114447765373013216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28744,7 +28733,6 @@ MonoBehaviour:
   - {fileID: 20590223246255970}
   - {fileID: 81429410871275972}
   - {fileID: 20504899203181566}
-  - {fileID: 114399582621435802}
   - {fileID: 114809567559951578}
   - {fileID: 114343728504889118}
   remoteLayerName: RemotePlayer

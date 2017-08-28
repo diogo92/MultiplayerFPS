@@ -2,23 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerManager))]
 public class PlayerScore : MonoBehaviour {
+
+	public static PlayerScore instance;
 
 	PlayerManager player;
 
 	int lastKills = 0;
 	int lastDeaths = 0;
 
-	void Start () {
-		player = GetComponent<PlayerManager> ();
+	void Awake(){
+		instance = this;
+	}
+
+	public void Setup (PlayerManager _player) {
+		player = _player;
 		StartCoroutine (SyncScoreLoop ());
 	}
 
-	void OnDestroy(){
-		if(player != null)
-			SyncNow ();
-	}
+//	void OnDestroy(){
+//		if(player != null)
+//			SyncNow ();
+//	}
 
 	IEnumerator SyncScoreLoop() {
 		while (true) {
@@ -27,7 +32,7 @@ public class PlayerScore : MonoBehaviour {
 		}
 	}
 
-	void SyncNow(){
+	public void SyncNow(){
 		if (DatabaseHandler.IsLoggedIn) {
 			StartCoroutine(DatabaseHandler.instance.GetKillCount (OnKillCountReceived));
 			StartCoroutine(DatabaseHandler.instance.GetDeathCount (OnDeathCountReceived));

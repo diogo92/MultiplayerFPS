@@ -75,7 +75,8 @@ public class PlayerSetup : NetworkBehaviour {
 		ui.SetPlayer (GetComponent<PlayerManager> ());
 		ui.GetComponentInChildren<CrosshairManager> ().Setup (weaponCamera);
 
-
+		//Set up the Player Score sync manager
+		PlayerScore.instance.Setup(GetComponent<PlayerManager>());
 
 		/* Set up the username of the player for the match */
 		string _username = "Loading...";

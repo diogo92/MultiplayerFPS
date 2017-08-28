@@ -2,6 +2,8 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+[RequireComponent(typeof(PlayerScore))]
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;

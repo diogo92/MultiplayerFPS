@@ -54,6 +54,11 @@ public class PlayerManager : NetworkBehaviour {
 	private Sprite playerAvatar;
 	private Sprite localPlayerAvatar;
 
+	void OnDestroy(){
+		if(PlayerScore.instance != null)
+			PlayerScore.instance.SyncNow ();
+	}
+
 	public void SetupPlayer(){
 		if (isLocalPlayer) {
 			GameManager.instance.SetSceneCameraState (false);
