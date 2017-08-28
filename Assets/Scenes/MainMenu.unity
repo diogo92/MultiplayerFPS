@@ -27000,7 +27000,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 772201350}
+      - m_Target: {fileID: 772201352}
         m_MethodName: LoadLobby
         m_Mode: 1
         m_Arguments:
@@ -30022,6 +30022,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   registerURL: http://recorded-interview.000webhostapp.com/RegisterPlayer.php
   loginURL: http://recorded-interview.000webhostapp.com/Login.php
+  getDataURL: http://recorded-interview.000webhostapp.com/GetDataHandler.php
+  setDataURL: http://recorded-interview.000webhostapp.com/SetDataHandler.php
+  loggedInSceneName: Lobby
+  loggedOutSceneName: MainMenu
 --- !u!1 &2029171915
 GameObject:
   m_ObjectHideFlags: 0

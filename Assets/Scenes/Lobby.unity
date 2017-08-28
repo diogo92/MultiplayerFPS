@@ -499,6 +499,7 @@ MonoBehaviour:
   sceneNames:
   - Arena1
   - Arena2
+  levelSelection: {fileID: 290437888}
 --- !u!4 &58072289
 Transform:
   m_ObjectHideFlags: 0

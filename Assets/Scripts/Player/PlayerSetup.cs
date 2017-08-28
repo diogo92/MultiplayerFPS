@@ -79,8 +79,8 @@ public class PlayerSetup : NetworkBehaviour {
 
 		/* Set up the username of the player for the match */
 		string _username = "Loading...";
-		if (UserAccountManager.IsLoggedIn)
-			_username = UserAccountManager.LoggedIn_Username;
+		if (DatabaseHandler.IsLoggedIn)
+			_username = DatabaseHandler.LoggedIn_Username;
 		else
 			_username = transform.name;
 		CmdSetUsername (transform.name, _username);
