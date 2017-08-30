@@ -36,17 +36,8 @@ public class PlayerUI : MonoBehaviour {
 		weaponManager = player.GetComponent<WeaponManager> ();
 		SetPlayerName (player.name);
 		if (PlayerPrefs.HasKey ("UserAvatarName"))
-			SetPlayerAvatar (PlayerPrefs.GetString("UserAvatarName"));
+			playerImage.sprite = Util.GetCurrentPlayerAvatar( (PlayerPrefs.GetString("UserAvatarName")));
 			
-	}
-
-	void SetPlayerAvatar(string _imageName){
-		Object[] avatarsObj = Resources.LoadAll ("Avatars",typeof(Sprite));
-		for (int i = 0; i < avatarsObj.Length; i++) {
-			if (((Sprite)avatarsObj [i]).name == _imageName)
-				playerImage.sprite = ((Sprite)avatarsObj [i]);
-		}
-
 	}
 
 	void SetPlayerName(string _name){

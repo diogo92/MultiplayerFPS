@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.IO;
 public class SettingsUIManager : MonoBehaviour {
 
 	[SerializeField]
@@ -44,11 +45,12 @@ public class SettingsUIManager : MonoBehaviour {
 
 	void PopulatePlayerIconDropdown(){
 		PlayerIconOptions.options.Clear ();
-
+		avatars = Util.GetAvatars ();
+		/*
 		UnityEngine.Object[] avatarsObj = Resources.LoadAll ("Avatars",typeof(Sprite));
 		for (int i = 0; i < avatarsObj.Length; i++) {
 			avatars.Add ((Sprite)avatarsObj [i]);
-		}
+		}*/
 		PlayerIconOptions.AddOptions (avatars);
 		List<Dropdown.OptionData> options = PlayerIconOptions.options;
 		for (int i = 0; i < options.Count; i++) {

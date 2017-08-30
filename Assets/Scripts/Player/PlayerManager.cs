@@ -64,7 +64,7 @@ public class PlayerManager : NetworkBehaviour {
 			GameManager.instance.SetSceneCameraState (false);
 			GetComponent<PlayerSetup> ().playerUIInstance.SetActive (true);
 			if (PlayerPrefs.HasKey ("UserAvatarName"))
-				SetLocalPlayerAvatar (PlayerPrefs.GetString ("UserAvatarName"));
+				localPlayerAvatar = Util.GetCurrentPlayerAvatar(PlayerPrefs.GetString ("UserAvatarName"));
 			CmdBroadCastNewPlayerSetup ();
 		} else {
 			StartCoroutine(WaitForBroadcast());
@@ -87,7 +87,7 @@ public class PlayerManager : NetworkBehaviour {
 		playerAvatar = Sprite.Create (tex, new Rect (0f, 0f, tex.width, tex.height), new Vector2 (0.5f, 0.5f), 100.0f);
 
 	}
-
+	/*
 	void SetLocalPlayerAvatar(string _imageName){
 		UnityEngine.Object[] avatarsObj = Resources.LoadAll ("Avatars",typeof(Sprite));
 		for (int i = 0; i < avatarsObj.Length; i++) {
@@ -97,7 +97,7 @@ public class PlayerManager : NetworkBehaviour {
 			}
 		}
 	}
-
+*/
 	public Sprite GetPlayerAvatar(){
 		if (isLocalPlayer)
 			return localPlayerAvatar;
